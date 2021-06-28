@@ -7,7 +7,7 @@ on:
     branches:
       - main
     paths:
-      - .github/workflows/aotumatedUpdateReadme.yml
+      - .github/workflows/automatedUpdateReadme.yml
 
 jobs:
   markscribe:
@@ -17,6 +17,7 @@ jobs:
       - name: Get current date
         id: date
         run: echo "::set-output name=date::$(date +'%Y-%m-%d %H:%M:%S')"
+  
       - name: github-update-readme-V2.0
         uses: Ligengxin96/github-update-readme@v1.7.0
         env:
