@@ -6,13 +6,13 @@ The `apis` branch project can expose the apis so that we can get our repo histor
 
 ## Last 14 days repo traffic data
 
-Total views data: `{ count: 56, uniques: 2 }`
+Total views data: `{ count: 66, uniques: 2 }`
 
-Total clones data: `{ count: 11, uniques: 7 }`
+Total clones data: `{ count: 16, uniques: 10 }`
 
 ## Latest fetch images time
 
-Latest fetch data time: `2021-06-29 00:47:16`
+Latest fetch data time: `2021-06-29 15:35:02`
 
 ## To everyone
 
