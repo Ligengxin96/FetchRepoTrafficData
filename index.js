@@ -18,28 +18,29 @@ const promiseFactory = (pomise) => {
   return new Promise((resolve, _) => {
     resolve(pomise);
   }).catch((error) => {
+    console.error(JSON.stringify(error));
     return error;
   });
 }
 
 const connectDB = async(repoName) => {
-  console.log(`${new Date()}: Begin connect MongooDB ${repoName}`);
+  console.log(`Begin connect MongooDB ${repoName}`);
   try {
     const connectStr = process.env.CONNECT_STRING.replace(/{database}/, repoName);
     const dbConnect = await mongoose.createConnection(connectStr, { useNewUrlParser: true, useUnifiedTopology: true });
-    console.log(`${new Date()}: MongooDB ${repoName} connect successful`);
+    console.log(`MongooDB ${repoName} connect successful`);
     await fetchRepooTrafficData(repoName, dbConnect);
   } catch (error) {
-    console.log(`${new Date()}: MongooDB ${repoName} connect faild with error: ${error.message}`);
+    console.error(`MongooDB ${repoName} connect faild with error: ${error.message}`);
   }
 }
 
 const processData = (existRecord, data, model) => {
   if (existRecord && !existRecord.date) {
-    throw new Error(`Unknown error occrrence.`);
+    throw new Error(`Unknown error occrrence when process ${JSON.stringify(data)}.`);
   }
   if (existRecord) {
-    console.log(`${new Date()}: This record with date: ${existRecord.date} is exist, update record.`);
+    console.log(`This record with date: ${existRecord.date} is exist, update record.`);
     data.lastUpdateTime = new Date();
     return { operation: 'update', promise: promiseFactory(updatReocrd(data.timestamp, data, model))};
   } else {
@@ -55,7 +56,7 @@ const fetchRepooTrafficData = async(repoName, dbConnect) => {
       promiseFactory(octokit.rest.repos.getClones({ owner: username, repo: repoName, per: 'day' }))
     ]);
 
-    console.log(`${new Date()}: fetch ${repoName} repo traffic date successful.`);
+    console.log(`Fetch ${repoName} repo traffic date successful.`);
 
     const viewsDataModel = dbConnect.model('viewsData', viewsDataSchema);
     const clonesDataModel = dbConnect.model('clonesData', clonesDataSchema);
@@ -89,32 +90,32 @@ const fetchRepooTrafficData = async(repoName, dbConnect) => {
     try {
       if (allUpdatePromise.length > 0) {
         await Promise.all(allUpdatePromise);
-        console.log(`${new Date()}: Update all records successful.`);
+        console.log(`Update all records successful.`);
       }
     } catch (error) {
-      console.log(`${new Date()}: Update all records failed with error: ${error.message}`);
+      console.error(`Update all records failed with error: ${error.message}`);
     }
 
     try {
       if (allCreatePromise.length > 0) {
         await Promise.all(allCreatePromise);
-        console.log(`${new Date()}: Create all records successful.`);
+        console.log(`Create all records successful.`);
       }
     } catch (error) {
-      console.log(`${new Date()}: Create all records failed with error: ${error.message}`);
+      console.error(`Create all records failed with error: ${error.message}`);
     }
 
   } catch (error) {
-    console.log(`${new Date()}: Fetch repo traffic data failed with error: ${error.message}`);
+    console.error(`Fetch repo traffic data failed with error: ${error.message}`);
   }
 }
 
 const main = async() => {
-  console.log(`${new Date()}: Task begin, current time: ${new Date()}`);
+  console.log(`Task begin, current time: ${new Date()}`);
   for await (let repo of repos) {
     await connectDB(repo)
   }
-  console.log(`${new Date()}: Task finish, current time: ${new Date()}`);
+  console.log(`Task finish, current time: ${new Date()}`);
   process.exit(0);
 }
 
