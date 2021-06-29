@@ -1,6 +1,8 @@
 ## About FetchRepooTrafficData
 
-This project can fetch specific repo everyday traffic data and save in the MongoDB
+The `main` branch project can fetch specific repo everyday traffic data and save in the MongoDB.
+
+The `apis` branch project can expose the apis so that we can get our repo historical traffic data.
 
 ## Last 14 days repo traffic data
 

@@ -2,8 +2,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import { Octokit } from "@octokit/rest";
 
-import viewsDataSchema from './models/viewsData.js';
-import clonesDataSchema from './models/clonesData.js';
+import trafficDataSchema from './models/trafficData.js';
 import { getRecord, createReocrd, updatReocrd } from './controllers/trafficData.js'
 
 import repos from './config/repos.js';
@@ -58,8 +57,8 @@ const fetchRepooTrafficData = async(repoName, dbConnect) => {
 
     console.log(`Fetch ${repoName} repo traffic date successful.`);
 
-    const viewsDataModel = dbConnect.model('viewsData', viewsDataSchema);
-    const clonesDataModel = dbConnect.model('clonesData', clonesDataSchema);
+    const viewsDataModel = dbConnect.model('viewsData', trafficDataSchema);
+    const clonesDataModel = dbConnect.model('clonesData', trafficDataSchema);
 
     const allGetRecordPromise = [];
     const allUpdatePromise = [];
