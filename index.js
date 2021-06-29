@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
+import moment from 'moment';
 import { Octokit } from "@octokit/rest";
 
 import trafficDataSchema from './models/trafficData.js';
@@ -9,6 +10,15 @@ import repos from './config/repos.js';
 
 dotenv.config();
 mongoose.set('useFindAndModify', false);
+
+if (!process.env.GITHUB_TOKEN) {
+  throw new Error(`GITHUB_TOKEN is enmpty can not access data.`);
+}
+
+if (!process.env.USER_NAME) {
+  throw new Error(`USER_NAME is enmpty can not access data.`);
+}
+
 const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
 
 const username = process.env.USER_NAME;
@@ -38,8 +48,9 @@ const processData = (existRecord, data, model) => {
   if (existRecord && !existRecord.date) {
     throw new Error(`Unknown error occrrence when process ${JSON.stringify(data)}.`);
   }
+  
   if (existRecord) {
-    console.log(`This record with date: ${existRecord.date} is exist, update record.`);
+    console.log(`This record with date: ${moment(existRecord.date).format('yyyy-MM-DD')} is exist, update record.`);
     data.lastUpdateTime = new Date();
     return { operation: 'update', promise: promiseFactory(updatReocrd(data.timestamp, data, model))};
   } else {
@@ -50,10 +61,16 @@ const processData = (existRecord, data, model) => {
 
 const fetchRepooTrafficData = async(repoName, dbConnect) => {
   try {
-    const [{ data: { views } }, { data: { clones } }] = await Promise.all([
-      promiseFactory(octokit.rest.repos.getViews({ owner: username, repo: repoName, per: 'day' })),
-      promiseFactory(octokit.rest.repos.getClones({ owner: username, repo: repoName, per: 'day' }))
-    ]);
+    let views = [];
+    let clones = [];
+    try {
+      [{ data: { views } }, { data: { clones } }] = await Promise.all([
+        promiseFactory(octokit.rest.repos.getViews({ owner: username, repo: repoName, per: 'day' })),
+        promiseFactory(octokit.rest.repos.getClones({ owner: username, repo: repoName, per: 'day' }))
+      ]);
+    } catch (error) {
+      throw new Error(`Fetch ${repoName} repo traffic data failed.`);
+    }
 
     console.log(`Fetch ${repoName} repo traffic date successful.`);
 
@@ -105,7 +122,7 @@ const fetchRepooTrafficData = async(repoName, dbConnect) => {
     }
 
   } catch (error) {
-    console.error(`Fetch repo traffic data failed with error: ${error.message}`);
+    console.error(error.message);
   }
 }
 
