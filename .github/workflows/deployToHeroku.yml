@@ -3,7 +3,9 @@ name: Deploy To Heroku
 on:
   push:
     branches:
-      - main
+      - apis
+    paths-ignore: 
+      - README.md
 
 jobs:
   build:
@@ -17,5 +19,5 @@ jobs:
         uses: akhileshns/heroku-deploy@v3.12.12
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "fetchrepootrafficdata"
+          heroku_app_name: "getrepootrafficdata"
           heroku_email: "ligengxin96@gmail.com"

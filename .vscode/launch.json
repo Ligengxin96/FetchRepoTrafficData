@@ -7,19 +7,11 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Current JS File",
-      "skipFiles": [
-          "<node_internals>/**"
+      "name": "Debug Launch Program",
+      "program": "${workspaceFolder}/index.js",
+      "outFiles": [
+        "${workspaceFolder}/**/*.js"
       ],
-      "program": "${relativeFile}"
-    }, {
-      "type": "node",
-      "request": "launch",
-      "name": "Mocha Current File",
-      "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
-      "args": ["--timeout", "999999", "--colors", "${file}"],
-      "console": "integratedTerminal",
-      "internalConsoleOptions": "neverOpen"
     }
   ]
 }

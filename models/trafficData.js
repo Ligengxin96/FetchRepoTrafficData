@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const clonesDataSchema = mongoose.Schema({
+const trafficDataSchema = mongoose.Schema({
     count: Number,
     uniques: Number,
     date: Date,
@@ -15,4 +15,4 @@ const clonesDataSchema = mongoose.Schema({
 })
 
 
-export default clonesDataSchema;
+export default trafficDataSchema;

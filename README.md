@@ -1,20 +1,45 @@
-## About FetchRepooTrafficData
+## About GetRepooTrafficData
 
-This project can fetch specific repo everyday traffic data and save in the MongoDB
+This branch project can expose the api so that we can get historical repo traffic data.
 
-## Last 14 days repo traffic data
+This branch project should use with main branch project, or make sure your collections name are same as your repo name.
 
-Total views data: `{ count: 56, uniques: 2 }`
+Your also should make sure add your repo name in `./config/repo.js`;
 
-Total clones data: `{ count: 11, uniques: 7 }`
+### `http://getrepootrafficdata.herokuapp.com/v1/getrepoinfo/{repo}`
 
-## Latest fetch images time
+Get the specified `{repo}` all traffic data.
 
-Latest fetch data time: `2021-06-29 00:47:16`
+### `http://getrepootrafficdata.herokuapp.com/v1/getrepoinfo/{repo}/{days}`
 
-## To everyone
+Get the specified `{repo}` latest `{days}` traffic data.
 
-If this project is helpful to you please star this project, this is an encouragement to me `:)`
+Blow example can get `FetchRepooTrafficData` repo latest `7` days traffic data.
 
+example: http://getrepootrafficdata.herokuapp.com/v1/getrepoinfo/FetchRepooTrafficData/7
 
+- `repo` parameter detail
+  - description: repo name
+  - require: `true`
 
+- `days` parameter detail
+  - description: how many days of traffic data you want get.
+  - require: `false`
+  - default: `0`
+
+### Common parameter `aggregate` and `sort`
+- `aggregate` parameter detail
+  - description: whether aggregate the traffic data
+  - require: `false`
+  - value: `true` | `false`
+  - default: `false`
+
+- `sort` parameter detail
+  - description: use with `{days}` parameter, get latest traffic `{days}` data or oldest `{days}` traffic
+  - require: `false`
+  - value: `asc` | `desc`
+  - default: `desc(latest)`
+
+Blow example can get `FetchRepooTrafficData` repo **oldest** `10` days **aggregated** traffic data.
+
+example: http://getrepootrafficdata.herokuapp.com/v1/getrepoinfo/FetchRepooTrafficData/10?aggregate=true&sort=asc
