@@ -4,15 +4,15 @@ The `main` branch project can fetch specific repo everyday traffic data and save
 
 The `apis` branch project can expose the apis so that we can get our repo historical traffic data.
 
-## Last 14 days repo traffic data
+## `2021-06-28` To `2021-06-30` FetchRepooTrafficData repo traffic data
 
-Total views data: `{ count: 147, uniques: 2 }`
+Total views data: `{ count: 163, uniques: 4 }`
 
-Total clones data: `{ count: 31, uniques: 16 }`
+Total clones data: `{ count: 14, uniques: 8 }`
 
 ## Latest fetch images time
 
-Latest fetch data time: `2021-06-30 00:52:12`
+Latest fetch data time: `2021-06-30 09:21:15`
 
 ## To everyone
 
