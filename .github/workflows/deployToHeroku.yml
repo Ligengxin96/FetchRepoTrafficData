@@ -1,4 +1,4 @@
-name: Deploy To Heroku
+name: Deploy Get Repoo Traffic Data Server To Heroku
 
 on:
   push:
