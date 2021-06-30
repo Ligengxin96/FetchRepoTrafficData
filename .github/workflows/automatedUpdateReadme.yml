@@ -18,19 +18,20 @@ jobs:
         id: date
         run: echo "::set-output name=date::$(date +'%Y-%m-%d %H:%M:%S')"
   
-      - name: github-update-readme-V2.0
-        uses: Ligengxin96/github-update-readme@v1.7.0
+      - name: UpdateReadmeAction-Private
+        uses: Ligengxin96/UpdateReadmeAction-Private@v1.0-private-dogfood
         env:
           GITHUB_TOKEN: ${{ secrets.UPDATE_README }}
         with:
           showTrafficData: true
+          apiPath: https://getrepootrafficdata.herokuapp.com/v1/getrepoinfo
           header: About FetchRepooTrafficData
           subhead: |
                   The `main` branch project can fetch specific repo everyday traffic data and save in the MongoDB.
 
                   The `apis` branch project can expose the apis so that we can get our repo historical traffic data.
                   
-                  ## Last 14 days repo traffic data
+                  ## `'{startDate}'` To `'{endDate}'` '{repo}' repo traffic data
 
                   Total views data: `'{viewsData}'`
 
