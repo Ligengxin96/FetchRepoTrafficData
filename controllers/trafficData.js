@@ -105,7 +105,9 @@ export const getTrafficData = async (request, response) => {
       message: error.message,
     });
   } finally {
-    dbConnect.close();
-    console.log('MongoDB connect close successful.')
+    if (dbConnect) {
+      dbConnect.close();
+      console.log('MongoDB connect close successful.');
+    }
   }
 }
