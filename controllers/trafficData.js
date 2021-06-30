@@ -25,6 +25,7 @@ const processData = (data, aggregate, sort) => {
 
 export const getTrafficData = async (request, response) => {
   request.setTimeout(200000);
+  let dbConnect;
   try {
     let { aggregate = 'false', sort = 'desc' } = request.query;
     let { repo, days = 0 } = request.params;
@@ -53,7 +54,6 @@ export const getTrafficData = async (request, response) => {
     console.log(`Aggregate is ${aggregate}, sort is ${sort}`);
 
     const connectStr = databaseConnectStr.replace(/{database}/, repo);
-    let dbConnect;
     try {
       console.log(`Connecting MongoDB ${repo}.`);
       dbConnect = await mongoose.createConnection(connectStr, { useNewUrlParser: true, useUnifiedTopology: true });
