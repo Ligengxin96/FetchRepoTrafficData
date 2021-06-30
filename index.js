@@ -123,6 +123,11 @@ const fetchRepooTrafficData = async(repoName, dbConnect) => {
 
   } catch (error) {
     console.error(error.message);
+  } finally {
+    if (dbConnect) {
+      dbConnect.close();
+      console.log('MongoDB connect close successful.');
+    }
   }
 }
 
