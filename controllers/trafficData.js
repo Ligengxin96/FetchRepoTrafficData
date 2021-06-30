@@ -15,9 +15,9 @@ const processData = (data, aggregate, sort) => {
     return data.map(item => { 
       delete item._id;
       if (sort === -1) {
-        return {...item, startData: moment(item.endDate).format('yyyy-MM-DD'), endDate: moment(item.startData).format('yyyy-MM-DD')};
+        return {...item, startDate: moment(item.endDate).format('yyyy-MM-DD'), endDate: moment(item.startDate).format('yyyy-MM-DD')};
       }
-      return {...item, startData: moment(item.startData).format('yyyy-MM-DD'), endDate: moment(item.endDate).format('yyyy-MM-DD')};
+      return {...item, startDate: moment(item.startDate).format('yyyy-MM-DD'), endDate: moment(item.endDate).format('yyyy-MM-DD')};
     });
   }
   return data.map(item => { return { date: moment(item.date).format('yyyy-MM-DD'), count: item.count, uniques: item.uniques }});
@@ -81,7 +81,7 @@ export const getTrafficData = async (request, response) => {
       if (days) {
         aggregateCondition.push({ $limit: days < 0 ? days * -1 : days });
       }
-      aggregateCondition.push({ $group: { _id: null, startData: { $first: '$date' }, endDate: { $last: '$date' }, countTotal: { $sum: '$count' }, uniquesTotal: { $sum: '$uniques' } }})
+      aggregateCondition.push({ $group: { _id: null, startDate: { $first: '$date' }, endDate: { $last: '$date' }, countTotal: { $sum: '$count' }, uniquesTotal: { $sum: '$uniques' } }})
       
       viewsData = processData(await viewsDataModel.aggregate(aggregateCondition), aggregate, sort);
       clonesData = processData(await clonesDataModel.aggregate(aggregateCondition), aggregate, sort);
