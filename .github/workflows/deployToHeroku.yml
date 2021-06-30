@@ -1,4 +1,4 @@
-name: Deploy To Heroku
+name: Deploy to trigger Fetch Repo Traffic Data
 
 on:
   push:
