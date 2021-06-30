@@ -50,7 +50,7 @@ export const getTrafficData = async (request, response) => {
     }
 
     console.log(`Repo is ${repo},`, days ? `days is ${days}` : '');
-    console.log(`Aggregate is ${aggregate},Aggregate is ${sort}`);
+    console.log(`Aggregate is ${aggregate}, sort is ${sort}`);
 
     const connectStr = databaseConnectStr.replace(/{database}/, repo);
     let dbConnect;
@@ -89,6 +89,8 @@ export const getTrafficData = async (request, response) => {
       viewsData = processData(await viewsDataModel.find().sort({ date: sort }).limit(days));
       clonesData = processData(await clonesDataModel.find().sort({ date: sort }).limit(days));
     }
+
+    console.log(`Fetching ${repo} repo traffic data successful.`);
 
     response.status(200).json({
       isSuccess: true,
