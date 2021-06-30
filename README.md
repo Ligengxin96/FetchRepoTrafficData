@@ -1,18 +1,18 @@
-## About FetchRepooTrafficData
+## About FetchRepoTrafficData
 
 The `main` branch project can fetch specific repo everyday traffic data and save in the MongoDB.
 
 The `apis` branch project can expose the apis so that we can get our repo historical traffic data.
 
-## `2021-06-28` To `2021-06-30` FetchRepooTrafficData repo traffic data
+## `2021-06-28` To `2021-06-30` FetchRepoTrafficData repo traffic data
 
-Total views data: `{ count: 163, uniques: 4 }`
+Total views data: `{ count: 223, uniques: 5 }`
 
-Total clones data: `{ count: 14, uniques: 8 }`
+Total clones data: `{ count: 49, uniques: 26 }`
 
 ## Latest fetch images time
 
-Latest fetch data time: `2021-06-30 09:21:15`
+Latest fetch data time: `2021-06-30 09:31:32`
 
 ## To everyone
 
