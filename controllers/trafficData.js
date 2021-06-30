@@ -75,11 +75,11 @@ export const getTrafficData = async (request, response) => {
     let viewsData = [];
     let clonesData = [];
     
-    // the aggregateCondition can not be change
+    // the aggregateCondition order can not be change
     if (aggregate === 'true') {
       const aggregateCondition = [{ $sort: { date: sort } }];
       if (days) {
-        aggregateCondition.push({ $limit: days });
+        aggregateCondition.push({ $limit: days < 0 ? days * -1 : days });
       }
       aggregateCondition.push({ $group: { _id: null, startData: { $first: '$date' }, endDate: { $last: '$date' }, countTotal: { $sum: '$count' }, uniquesTotal: { $sum: '$uniques' } }})
       
