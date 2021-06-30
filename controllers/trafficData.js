@@ -72,36 +72,30 @@ export const getTrafficData = async (request, response) => {
 
     const viewsDataModel = dbConnect.model('viewsData', trafficDataSchema);
     const clonesDataModel = dbConnect.model('clonesData', trafficDataSchema);
-
+    let viewsData = [];
+    let clonesData = [];
+    
+    // the aggregateCondition can not be change
     if (aggregate === 'true') {
       const aggregateCondition = [{ $sort: { date: sort } }];
-
       if (days) {
         aggregateCondition.push({ $limit: days });
       }
-
       aggregateCondition.push({ $group: { _id: null, startData: { $first: '$date' }, endDate: { $last: '$date' }, countTotal: { $sum: '$count' }, uniquesTotal: { $sum: '$uniques' } }})
       
-      const viewsData = processData(await viewsDataModel.aggregate(aggregateCondition), aggregate, sort);
-      const clonesData = processData(await clonesDataModel.aggregate(aggregateCondition), aggregate, sort);
-  
-      response.status(200).json({
-        isSuccess: true,
-        data: { viewsData, clonesData },
-        message: 'Successful'
-      });
-
+      viewsData = processData(await viewsDataModel.aggregate(aggregateCondition), aggregate, sort);
+      clonesData = processData(await clonesDataModel.aggregate(aggregateCondition), aggregate, sort);
     } else {
-      const viewsData = processData(await viewsDataModel.find().sort({ date: sort }).limit(days));
-      const clonesData = processData(await clonesDataModel.find().sort({ date: sort }).limit(days));
-  
-      response.status(200).json({
-        isSuccess: true,
-        data: { viewsData, clonesData },
-        message: 'Successful'
-      });
-
+      viewsData = processData(await viewsDataModel.find().sort({ date: sort }).limit(days));
+      clonesData = processData(await clonesDataModel.find().sort({ date: sort }).limit(days));
     }
+
+    response.status(200).json({
+      isSuccess: true,
+      data: { viewsData, clonesData },
+      message: 'Successful'
+    });
+  
   } catch (error) {
     response.status(404).json({
       isSuccess: false, 
