@@ -97,12 +97,15 @@ export const getTrafficData = async (request, response) => {
       data: { viewsData, clonesData },
       message: 'Successful'
     });
-  
+
   } catch (error) {
     response.status(404).json({
       isSuccess: false, 
       data: [],
       message: error.message,
     });
+  } finally {
+    dbConnect.close();
+    console.log('MongoDB connect close successful.')
   }
 }
