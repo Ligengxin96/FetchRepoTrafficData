@@ -33,21 +33,19 @@ export const getTrafficData = async (request, response) => {
     days = parseInt(days);
 
     if (!repo) {
-      response.status(400).json({
+      return response.status(400).json({
         isSuccess: false,
         data: {},
         message: `Repo name can not be empty.`
       });
-      return;
     }
 
     if (!existRepos.includes(repo)) {
-      response.status(404).json({
+      return response.status(404).json({
         isSuccess: false, 
         data: {},
         message: `Repo ${repo} doesn't exist in database, please check repo name and try again.`,
       });
-      return;
     }
 
     console.log(`Repo is ${repo},`, days ? `days is ${days}` : '');
@@ -60,12 +58,11 @@ export const getTrafficData = async (request, response) => {
       console.log(`Connecting MongoDB ${repo} successful.`);
     } catch (error) {
       console.error(error.message);
-      response.status(404).json({
+      return response.status(404).json({
         isSuccess: false, 
         data: {},
         message: `Connect ${repo} failed with error: ${error.message}.`,
       });
-      return;
     }
 
     console.log(`Fetching ${repo} repo traffic data.`);
