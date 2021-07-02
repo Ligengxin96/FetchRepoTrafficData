@@ -37,9 +37,9 @@ jobs:
 
                   Total clones data: `'{clonesData}'`
                   
-                  ## Latest fetch images time
+                  ## Latest fetch repo traffic data time
                   
-                  Latest fetch data time: `${{ steps.date.outputs.date }}`
+                  Latest fetch repo traffic data time: `${{ steps.date.outputs.date }}`
                   
                   ## To everyone
                   
