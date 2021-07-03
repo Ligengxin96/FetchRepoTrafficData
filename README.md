@@ -16,7 +16,7 @@ Get the specified `{repo}` latest `{days}` traffic data.
 
 Blow example can get `FetchRepooTrafficData` repo latest `7` days traffic data.
 
-example: http://getrepootrafficdata.herokuapp.com/v1/getrepoinfo/FetchRepooTrafficData/7
+example: http://getrepotrafficdata.herokuapp.com/v1/getrepoinfo/FetchRepooTrafficData/7
 
 - `repo` parameter detail
   - description: repo name
@@ -42,4 +42,4 @@ example: http://getrepootrafficdata.herokuapp.com/v1/getrepoinfo/FetchRepooTraff
 
 Blow example can get `FetchRepooTrafficData` repo **oldest** `10` days **aggregated** traffic data.
 
-example: http://getrepootrafficdata.herokuapp.com/v1/getrepoinfo/FetchRepooTrafficData/10?aggregate=true&sort=asc
+example: http://getrepotrafficdata.herokuapp.com/v1/getrepoinfo/FetchRepooTrafficData/10?aggregate=true&sort=asc
