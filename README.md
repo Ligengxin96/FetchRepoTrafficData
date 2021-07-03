@@ -1,4 +1,4 @@
-## About GetRepooTrafficData
+## About GetRepoTrafficData
 
 This branch project can expose the api so that we can get historical repo traffic data.
 
@@ -16,7 +16,7 @@ Get the specified `{repo}` latest `{days}` traffic data.
 
 Blow example can get `FetchRepooTrafficData` repo latest `7` days traffic data.
 
-example: http://getrepotrafficdata.herokuapp.com/v1/getrepoinfo/FetchRepooTrafficData/7
+example: http://getrepootrafficdata.herokuapp.com/v1/getrepoinfo/FetchRepoTrafficData/7
 
 - `repo` parameter detail
   - description: repo name
@@ -42,4 +42,4 @@ example: http://getrepotrafficdata.herokuapp.com/v1/getrepoinfo/FetchRepooTraffi
 
 Blow example can get `FetchRepooTrafficData` repo **oldest** `10` days **aggregated** traffic data.
 
-example: http://getrepotrafficdata.herokuapp.com/v1/getrepoinfo/FetchRepooTrafficData/10?aggregate=true&sort=asc
+example: http://getrepootrafficdata.herokuapp.com/v1/getrepoinfo/FetchRepoTrafficData/10?aggregate=true&sort=asc
