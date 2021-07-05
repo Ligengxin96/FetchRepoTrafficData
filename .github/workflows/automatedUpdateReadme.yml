@@ -27,7 +27,7 @@ jobs:
           apiPath: https://getrepootrafficdata.herokuapp.com/v1/getrepoinfo
           header: About FetchRepoTrafficData
           subhead: |
-                  The `main` branch project can fetch specific repo everyday traffic data and save in the MongoDB.
+                  The `main` branch project can fetch specific repo everyday traffic data and save them in the MongoDB.
 
                   The `apis` branch project can expose the apis so that we can get our repo historical traffic data.
                   
