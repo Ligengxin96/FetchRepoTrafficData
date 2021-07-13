@@ -30,6 +30,8 @@ jobs:
               cd  ./server/FetchRepoTrafficData
               git pull
             fi
-            docker stop get-repoTrafficData || true && docker container rm get-repoTrafficData || true && docker image rm get-repoTrafficData -f || true
-            docker build -t get-repoTrafficData .
-            docker run -e CONNECTION_URL=$CONNECTION_URL -p 5002:5002 -d --name get-repoTrafficData get-repoTrafficData
+            docker stop get-repo-traffic-data || true && docker container rm get-repo-traffic-data || true && docker image rm get-repo-traffic-data -f || true
+            docker build -t get-repo-traffic-data .
+            docker run -e CONNECTION_URL=$CONNECTION_URL -p 5002:5002 -d --name get-repo-traffic-data get-repo-traffic-data
+
+# containers (get-repo-traffic-data) name must be lowercase
