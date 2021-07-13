@@ -14,12 +14,12 @@ jobs:
       - name: Upload repo to own server and build server
         uses: appleboy/ssh-action@master
         env:
-          CONNECTION_URL: ${{ secrets.CONNECTION_URL }}
+          CONNECT_STRING: ${{ secrets.CONNECT_STRING }}
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          envs: CONNECTION_URL
+          envs: CONNECT_STRING
           script: |
             if [ ! -d "./server/FetchRepoTrafficData" ]; then
               cd  ./server
@@ -32,6 +32,6 @@ jobs:
             fi
             docker stop get-repo-traffic-data || true && docker container rm get-repo-traffic-data || true && docker image rm get-repo-traffic-data -f || true
             docker build -t get-repo-traffic-data .
-            docker run -e CONNECTION_URL=$CONNECTION_URL -p 5002:5002 -d --name get-repo-traffic-data get-repo-traffic-data
+            docker run -e CONNECT_STRING=$CONNECT_STRING -p 5002:5002 -d --name get-repo-traffic-data get-repo-traffic-data
 
 # containers (get-repo-traffic-data) name must be lowercase
