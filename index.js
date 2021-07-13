@@ -134,7 +134,7 @@ const fetchRepooTrafficData = async(repoName, dbConnect) => {
 const main = async() => {
   console.log(`Task begin, current time: ${new Date()}`);
   for await (let repo of repos) {
-    await connectDB(repo)
+    await connectDB(repo);
   }
   console.log(`Task finish, current time: ${new Date()}`);
   process.exit(0);
