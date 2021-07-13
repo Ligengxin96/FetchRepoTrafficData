@@ -1,0 +1,35 @@
+name: Deploy Get Repoo Traffic Data Server
+
+on:
+  push:
+    branches:
+      - apis
+    paths-ignore: 
+      - README.md
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Upload repo to own server and build server
+        uses: appleboy/ssh-action@master
+        env:
+          CONNECTION_URL: ${{ secrets.CONNECTION_URL }}
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          envs: CONNECTION_URL
+          script: |
+            if [ ! -d "./server/FetchRepoTrafficData" ]; then
+              cd  ./server
+              git clone https://github.com/Ligengxin96/FetchRepoTrafficData.git
+              cd ./FetchRepoTrafficData
+              git checkout apis
+            else 
+              cd  ./server/FetchRepoTrafficData
+              git pull
+            fi
+            docker stop get-repoTrafficData || true && docker container rm get-repoTrafficData || true && docker image rm get-repoTrafficData -f || true
+            docker build -t get-repoTrafficData .
+            docker run -e CONNECTION_URL=$CONNECTION_URL -p 5002:5002 -d --name get-repoTrafficData get-repoTrafficData
