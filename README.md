@@ -16,7 +16,7 @@ Get the specified `{repo}` latest `{days}` traffic data.
 
 Blow example can get `FetchRepooTrafficData` repo latest `7` days traffic data.
 
-example: `https://www.ligengxin-server.top/getrepoinfo/v1/getrepoinfo/FetchRepoTrafficData/7`
+example: https://www.ligengxin-server.top/getrepoinfo/v1/getrepoinfo/FetchRepoTrafficData/7
 
 - `repo` parameter detail
   - description: repo name
@@ -42,4 +42,4 @@ example: `https://www.ligengxin-server.top/getrepoinfo/v1/getrepoinfo/FetchRepoT
 
 Blow example can get `FetchRepooTrafficData` repo **oldest** `10` days **aggregated** traffic data.
 
-example: `https://www.ligengxin-server.top/getrepoinfo/v1/getrepoinfo/FetchRepoTrafficData/10?aggregate=true&sort=asc`
+example: https://www.ligengxin-server.top/getrepoinfo/v1/getrepoinfo/FetchRepoTrafficData/10?aggregate=true&sort=asc
