@@ -6,17 +6,17 @@ This branch project should use with main branch project, or make sure your colle
 
 Your also should make sure add your repo name in `./config/repo.js`;
 
-### `http://getrepootrafficdata.herokuapp.com/v1/getrepoinfo/{repo}`
+### `https://www.ligengxin-server.top/getrepoinfo/v1/getrepoinfo/{repo}`
 
 Get the specified `{repo}` all traffic data.
 
-### `http://getrepootrafficdata.herokuapp.com/v1/getrepoinfo/{repo}/{days}`
+### `https://www.ligengxin-server.top/getrepoinfo/v1/getrepoinfo/{repo}/{days}`
 
 Get the specified `{repo}` latest `{days}` traffic data.
 
 Blow example can get `FetchRepooTrafficData` repo latest `7` days traffic data.
 
-example: http://getrepootrafficdata.herokuapp.com/v1/getrepoinfo/FetchRepoTrafficData/7
+example: `https://www.ligengxin-server.top/getrepoinfo/v1/getrepoinfo/FetchRepoTrafficData/7`
 
 - `repo` parameter detail
   - description: repo name
@@ -42,4 +42,4 @@ example: http://getrepootrafficdata.herokuapp.com/v1/getrepoinfo/FetchRepoTraffi
 
 Blow example can get `FetchRepooTrafficData` repo **oldest** `10` days **aggregated** traffic data.
 
-example: http://getrepootrafficdata.herokuapp.com/v1/getrepoinfo/FetchRepoTrafficData/10?aggregate=true&sort=asc
+example: `https://www.ligengxin-server.top/getrepoinfo/v1/getrepoinfo/FetchRepoTrafficData/10?aggregate=true&sort=asc`
