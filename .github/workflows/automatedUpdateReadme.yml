@@ -19,7 +19,7 @@ jobs:
         run: echo "::set-output name=date::$(date +'%Y-%m-%d %H:%M:%S')"
   
       - name: UpdateReadmeAction-Private
-        uses: Ligengxin96/UpdateReadmeAction-Private@v1.0-private-canary
+        uses: Ligengxin96/UpdateReadmeAction-Private@v1.0-private-beta
         env:
           GITHUB_TOKEN: ${{ secrets.UPDATE_README }}
         with:
