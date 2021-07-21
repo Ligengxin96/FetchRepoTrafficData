@@ -4,17 +4,17 @@ The `main` branch project can fetch specific repo everyday traffic data and save
 
 The `apis` branch project can expose the apis so that we can get our repo historical traffic data.
 
-The `visualization` branch project is a front project that can make the repo traffic data visualization.
+The `visualization` branch project is a frontend project that can make the repo traffic data visualization.
 
 ## `2021-06-28` To `2021-07-21` FetchRepoTrafficData repo traffic data
 
-Total views data: `{ count: 487, uniques: 20 }`
+Total views data: `{ count: 490, uniques: 20 }`
 
 Total clones data: `{ count: 149, uniques: 113 }`
 
 ## Latest fetch repo traffic data time
 
-Latest fetch repo traffic data time: `2021-07-21 15:50:45`
+Latest fetch repo traffic data time: `2021-07-21 15:57:14`
 
 ## To everyone
 
