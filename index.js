@@ -45,7 +45,7 @@ const connectDB = async(repoName) => {
 }
 
 const processData = (existRecord, data, model) => {
-  if (existRecord && !existRecord.date) {
+  if (!existRecord?.date) {
     throw new Error(`Unknown error occrrence when process ${JSON.stringify(data)}.`);
   }
   
@@ -106,7 +106,7 @@ const fetchRepooTrafficData = async(repoName, dbConnect) => {
     try {
       if (allUpdatePromise.length > 0) {
         await Promise.all(allUpdatePromise);
-        console.log(`Update all records successful.`);
+        console.log(`Update all records successful. Updated count: ${allCreatePromise.length}`);
       }
     } catch (error) {
       console.error(`Update all records failed with error: ${error.message}`);
@@ -115,7 +115,7 @@ const fetchRepooTrafficData = async(repoName, dbConnect) => {
     try {
       if (allCreatePromise.length > 0) {
         await Promise.all(allCreatePromise);
-        console.log(`Create all records successful.`);
+        console.log(`Create all records successful. Create count: ${allCreatePromise.length}`);
       }
     } catch (error) {
       console.error(`Create all records failed with error: ${error.message}`);
@@ -126,7 +126,7 @@ const fetchRepooTrafficData = async(repoName, dbConnect) => {
   } finally {
     if (dbConnect) {
       dbConnect.close();
-      console.log('MongoDB connect close successful.');
+      console.log(`MongoDB connect close successful.`);
     }
   }
 }

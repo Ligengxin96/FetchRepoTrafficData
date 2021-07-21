@@ -38,7 +38,7 @@ export const updatReocrd = async (date, data, model) => {
   }
   console.log(`Need be updated ${model.modelName} record date: ${moment(date).format('yyyy-MM-DD')}`);
   try {
-    const newData = await model.findOneAndUpdate(date, data, { new: true });
+    const newData = await model.findOneAndUpdate({ date }, data, { new: true });
     console.log(`Update ${model.modelName} record successful, ${model.modelName} record: ${JSON.stringify(newData)}`);
   } catch (error) {
     const errorMessage = `Update ${model.modelName} record failed with error: ${error.message}`;
