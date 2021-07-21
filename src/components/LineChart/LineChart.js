@@ -4,7 +4,7 @@ import ReactEChartsCore from 'echarts-for-react/lib/core';
 import { Card } from 'antd';
 import { LineChart as EchartSLineChart } from 'echarts/charts';
 import * as echarts from 'echarts/core';
-import { GridComponent, TooltipComponent, TitleComponent, DataZoomComponent } from 'echarts/components';
+import { GridComponent, TooltipComponent, TitleComponent, DataZoomComponent, LegendComponent } from 'echarts/components';
 import { CanvasRenderer } from 'echarts/renderers';
 import moment from 'moment';
 
@@ -87,7 +87,7 @@ const getOption = (repoData, repoName) => {
     ],
     series: [
       {
-        name: 'view',
+        name: 'views',
         type: 'line',
         data: repoData.views
       },
@@ -118,7 +118,7 @@ const LineChart = ({ repoName }) => {
       });
   }, [repoName]);
 
-  echarts.use([GridComponent, TooltipComponent, TitleComponent, DataZoomComponent, EchartSLineChart, CanvasRenderer]);
+  echarts.use([GridComponent, TooltipComponent, TitleComponent, DataZoomComponent, LegendComponent, EchartSLineChart, CanvasRenderer]);
 
   return (
     <Card
