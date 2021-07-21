@@ -1,3 +1,4 @@
+/* eslint-disable no-loop-func */
 import { useState, useEffect } from 'react';
 import ReactEChartsCore from 'echarts-for-react/lib/core';
 import { Card } from 'antd';
