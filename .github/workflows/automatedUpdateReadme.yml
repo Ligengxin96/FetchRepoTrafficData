@@ -31,6 +31,8 @@ jobs:
 
                   The `apis` branch project can expose the apis so that we can get our repo historical traffic data.
                   
+                  The `visualization` branch project is a front project that can make the repo traffic data visualization.
+                  
                   ## `'{startDate}'` To `'{endDate}'` '{repo}' repo traffic data
 
                   Total views data: `'{viewsData}'`
