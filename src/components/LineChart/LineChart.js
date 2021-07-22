@@ -144,7 +144,7 @@ const LineChart = ({ repoName }) => {
         bordered 
         loading={loading}
         type="inner"
-        title={<h2>{`${repoName} ${repoData?.date[0]} To ${repoData?.date[repoData.date.length - 1]} Traffic Data`}</h2>}
+        title={<h2>{`${repoName} ${repoData?.date[0] || '-'} To ${repoData?.date[repoData.date.length - 1] || '-'} Traffic Data`}</h2>}
       >
         <Card.Grid style={{ width: '100%' }} hoverable={false}>
           <ReactEChartsCore
