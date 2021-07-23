@@ -45,7 +45,8 @@ const connectDB = async(repoName) => {
 }
 
 const processData = (existRecord, data, model) => {
-  if (!existRecord?.date) {
+  // existRecord may be is an error object, do not change below line code
+  if (existRecord && !existRecord.date) {
     throw new Error(`Unknown error occrrence when process ${JSON.stringify(data)}.`);
   }
   
