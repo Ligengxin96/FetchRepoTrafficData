@@ -59,7 +59,7 @@ const getOption = (repoData) => {
       trigger: 'axis',
     },
     legend: {
-      data: ['Views', 'Clones', 'Unique Views', 'Unique Clones'],
+      data: ['Views', 'Clones', 'Unique Visitors', 'Unique Cloners'],
       itemGap: 7
     },
     grid: {
@@ -95,12 +95,12 @@ const getOption = (repoData) => {
     ],
     series: [
       {
-        name: 'Unique Views',
+        name: 'Unique Visitors',
         type: 'line',
         data: repoData.uniqueViews
       },
       {
-        name: 'Unique Clones',
+        name: 'Unique Cloners',
         type: 'line',
         data: repoData.uniqueClones
       },
