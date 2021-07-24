@@ -20,7 +20,7 @@ const processData = ({ viewsData = [], clonesData = [] }) => {
   minDate = moment(minDate);
   maxDate = moment(maxDate);
 
-  while (minDate.isBefore(maxDate)) {
+  while (minDate.isSameOrBefore(maxDate)) {
     result.uniqueViews.push({
       date: minDate.format('YYYY-MM-DD'),
       value: viewsData.find((item) => minDate.isSame(item.date))?.uniques || 0,
