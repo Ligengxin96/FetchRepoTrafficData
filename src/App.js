@@ -8,7 +8,7 @@ const REPOS = [
   'FetchBingDailyImage',
   'Ours-Album',
   'FetchRepoTrafficData',
-  'SQL-in-MongoDB'
+  'sql-in-mongodb'
 ]
 
 const App = () => {
