@@ -6,15 +6,15 @@ The `apis` branch project can expose the apis so that we can get our repo histor
 
 The `visualization` branch project is a frontend project that can make the repo traffic data visualization.
 
-## `2021-06-28` To `2022-07-06` FetchRepoTrafficData repo traffic data
+## `2021-06-28` To `2022-07-07` FetchRepoTrafficData repo traffic data
 
 Total views data: `{ count: 677, uniques: 74 }`
 
-Total clones data: `{ count: 919, uniques: 686 }`
+Total clones data: `{ count: 922, uniques: 688 }`
 
 ## Latest fetch repo traffic data time
 
-Latest fetch repo traffic data time: `2022-07-07 01:52:00`
+Latest fetch repo traffic data time: `2022-07-08 01:50:27`
 
 ## To everyone
 
