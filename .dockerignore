@@ -1,0 +1,25 @@
+# dependencies
+/.pnp
+.pnp.js
+.gitignore
+.prettierrc
+
+# testing
+/coverage
+
+# production
+/build
+/dist
+/log
+/node_modules
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+ormlogs.log*
+
+*.sh
+
+ormconfig.json
+.vscode
+
