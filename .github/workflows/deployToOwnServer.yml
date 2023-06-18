@@ -32,4 +32,4 @@ jobs:
             fi
             docker stop get-repo-traffic-data || true && docker container rm get-repo-traffic-data || true && docker image rm get-repo-traffic-data -f || true
             docker build -t get-repo-traffic-data .
-            docker run -e CONNECT_STRING=$CONNECT_STRING -p 5002:5002 --net userDefined --ip 172.20.0.4 --restart=always -d --name get-repo-traffic-data get-repo-traffic-data
+            docker run -e CONNECT_STRING=$CONNECT_STRING -p 5002:5002 --net userDefined --restart=always -d --name get-repo-traffic-data get-repo-traffic-data
